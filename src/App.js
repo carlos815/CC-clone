@@ -11,7 +11,7 @@ import Social from './Social';
 import Footer from './Footer';
 
 import PrrS from './images/Image-118.png'
-
+import StoreImg from './images/store.jpg'
 import db from './db/posts'
 
 import recents from './db/recents'
@@ -21,6 +21,8 @@ import life from './db/life'
 import politics from './db/politics'
 
 import categories from './db/categories'
+
+import ImageLoader from './common/ImageLoader'
 
 // get the first most recents minus the briefing
 // get the lastest briefing
@@ -39,7 +41,7 @@ function App() {
 
     console.log(State.briefings[0] == null)
   }, [])
-    
+
 
   const getIndexes = (data, category, inverse = false) => {
 
@@ -54,7 +56,7 @@ function App() {
         if (element.categories == category) found.push(index)
       })
     }
- //   console.log(found)
+    //   console.log(found)
     return found
   }
 
@@ -79,17 +81,18 @@ function App() {
             </g>
           </svg>
         </header>
+        
+        {recents.map((post) => <ArticleBig post={post} categories={categories} />
+        )}
 
-        <ArticleBig post={recents[0]} categories={categories} />
-        <ArticleBig post={recents[1]} categories={categories} />
-        <ArticleBig post={recents[2]} categories={categories} />
-        <ArticleBig post={recents[3]} categories={categories} />
-        <ArticleBig post={recents[4]} categories={categories} />
+        <figure className='PRR img-container'>
+          <img src={StoreImg} alt="article" srcSet="" />
+        </figure>
 
         <ArticleBriefing post={briefing[0]} categories={categories} />
 
-        <figure className='PRR'>
-          <img src={PrrS} alt="article" srcset="" />
+        <figure className='PRR img-container'>
+          <img src={PrrS} alt="article" srcSet="" />
         </figure>
 
         <Category posts={politics} category={'Politics'} />

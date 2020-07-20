@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import figure from '../images/rock_contra_la_dictadura_2_3-990x524.jpg';
-import Img from '@lxsmnsyc/react-image';
+import ImageLoader from '../common/ImageLoader'
+import LazyLoad from 'react-lazy-load';
+
 
 const htmlTags = /<(.|\n)*?>/g
 
@@ -13,30 +15,32 @@ export default function ArticleBriefing(props) {
                     <div className='category'><p>
                 Daily Briefing
             </p></div>
-            <figure ref={figRef}>
-                <Img
-                    src={props.post.jetpack_featured_media_url}
-                    fallback={<div>THIS IS STILL LOADINGS asd asdNGANasaSGNUIAS asd asd NGIASHN</div>}
-                    containerRef={figRef}
-                   /* sources={[
-                        {
-                            source: 'portrait.jpg',
-                            media: '(orientation: portrait)',
-                        },
-                        {
-                            source: 'landscape.jpg',
-                            media: '(orientation: landscape)',
-                        },
-                    ]}*/
-                />
-            </figure>
+
+
+            <LazyLoad
+                placeholder={<div className='img-container'></div>}
+                debounce={false}
+                offsetVertical={100}
+                overflow={true}
+                >
+                <figure className='img-container'>
+
+
+                 <ImageLoader media={props.post.jetpack_featured_media_url}/>
+
+                </figure>
+                </LazyLoad>
+
+
+        
+        
     
             <div className='info'>
                 <h2>{props.post.title.rendered}</h2>
                 <p className='summary'>{props.post.excerpt.rendered.replace(htmlTags, '')}</p>
                 <p className='article-meta'>
                     <a href="https://www.caracaschronicles.com/author/tamarakathleen/">Tamara Taraciuk and Kathleen Page</a>
-            <time datetime={props.date}>July 15, 2020</time></p>
+            <time dateTime={props.date}>July 15, 2020</time></p>
             </div>
         </div>
     );

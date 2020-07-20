@@ -10,6 +10,8 @@
     "gsap": "^3.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-lazy-load": "^3.1.13",
+    "react-lazyload": "^3.0.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {

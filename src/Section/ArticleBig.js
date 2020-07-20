@@ -3,6 +3,10 @@ import figure from '../images/rock_contra_la_dictadura_2_3-990x524.jpg';
 import { _replaceRandom } from 'gsap/gsap-core';
 import Img from '@lxsmnsyc/react-image';
 
+import LazyLoad from 'react-lazyload';
+import ImageLoader from '../common/ImageLoader'
+
+
 
 const htmlTags = /<(.|\n)*?>/g
 
@@ -13,7 +17,7 @@ export default function ArticleBig(props) {
     const initialState = { image: null, loading: true }
 
     const [State, setState] = useState(initialState);
-    let img = null;
+    // let img = null;
     /*
         useEffect(() => {
     
@@ -37,23 +41,21 @@ export default function ArticleBig(props) {
     return (
 
         <div className='article-big'>
-            <figure ref={figRef}>
-                <Img
-                    src={props.post.jetpack_featured_media_url}
-                    fallback={<div>THIS IS STILL LOADINGS asd asdNGANasaSGNUIAS asd asd NGIASHN</div>}
-                    containerRef={figRef}
-                   /* sources={[
-                        {
-                            source: 'portrait.jpg',
-                            media: '(orientation: portrait)',
-                        },
-                        {
-                            source: 'landscape.jpg',
-                            media: '(orientation: landscape)',
-                        },
-                    ]}*/
-                />
-            </figure>
+                            <LazyLoad
+                placeholder={<div className='img-container'></div>}
+                debounce={false}
+                offsetVertical={100}
+                overflow={false}
+
+                >
+                <figure className='img-container'>
+
+
+                 <ImageLoader media={props.post.jetpack_featured_media_url}/>
+
+                </figure>
+                </LazyLoad>
+
             <div className='category'><p>
                 {props.categories[props.post.categories]}
             </p></div>
@@ -61,7 +63,7 @@ export default function ArticleBig(props) {
             <p className='summary'>{props.post.excerpt.rendered.replace(htmlTags, '')}</p>
             <p className='article-meta'>
                 <a href="https://www.caracaschronicles.com/author/tamarakathleen/">Tamara Taraciuk and Kathleen Page</a>
-                <time datetime={props.date}>July 15, 2020</time></p>
+                <time dateTime={props.date}>July 15, 2020</time></p>
         </div>
     );
 }

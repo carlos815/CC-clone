@@ -6,6 +6,34 @@
 
 :root {
     --main-yellow: rgba(255, 188, 0, 1);
+    --main-font: 'Gelasio', sans-serif;
+    --secondary-font: 'Noto Sans', sans-serif;
+
+    --biggest-category: normal bold 1.2rem /1.2 var(--secondary-font);
+    --biggest-heading: bold 2.3rem /2.4rem var(--main-font);
+    --biggest-content: 1.14rem /1.7rem var(--main-font);
+    --biggest-meta: italic 0.8rem var(--main-font);
+
+    --large-content: normal 1.1rem /1.8rem var(--main-font);
+    --large-category: normal bold 1.2rem /1.2 var(--secondary-font);
+    
+    --small-bold: normal bold 0.9rem /1.2 var(--secondary-font);
+
+    --medium-heading: bold 1.85rem /1.9rem var(--main-font);
+    --medium-content: 0.95rem /1.4rem var(--main-font);
+    --medium-meta: italic 0.78rem var(--main-font);
+
+    --medium-bold: 1rem;
+
+    --small-heading: bold 1.2rem /1.5rem var(--main-font);
+    --small-meta: italic 0.750rem /1rem var(--main-font);
+
+    --large-noto: normal bold 1.18rem /2.4rem var(--secondary-font);
+    --small-noto: normal 1rem /2.4rem var(--secondary-font);
+    --small-noto-bold: bold 1rem /1.4rem var(--secondary-font);
+
+    --tiny: normal 0.71rem /1.4rem var(--secondary-font);
+    
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,700;1,400&display=swap');
@@ -57,7 +85,6 @@
     flex-direction: column;
     align-items: center;
     margin: 30px 0px;
-    font-family: 'Gelasio';
     margin: 0 1.72rem;
     margin-bottom: 1.1rem;
 }
@@ -65,12 +92,14 @@
 .category {
     align-self: start;
     border-bottom: 2px solid var(--main-yellow);
-    font-weight: bold;
-    font-size: 0.9rem;
+
+
     transition: all 0.5s;
-    font-family: 'Noto Sans', sans serif;
+
     justify-content: right;
     margin: 1rem 0rem;
+    font: var(--small-bold)
+
 }
 
 .category:hover {
@@ -80,13 +109,12 @@
 }
 
 h2 {
-    font-size: 1.85rem;
-    font-family: 'Gelasio', sans-serif;
-    line-height: 1.9rem;
+    font: var(--medium-heading);
     margin-bottom: 1rem;
     transition: color 0.5s;
     text-align: left;
     width: 100%;
+
 }
 
 h2:hover {
@@ -95,9 +123,9 @@ h2:hover {
 }
 
 .article-big .summary {
-    font-family: Gelasio, sans-serif;
-    font-weight: 400;
     margin-bottom: 1rem;
+    font: var(--medium-content);
+
 }
 
 .article-big:first-of-type .category:hover {
@@ -107,22 +135,45 @@ h2:hover {
 
 .article-big:first-of-type .category {
     align-self: center;
-    font-size: 1.2rem;
+    font: var(--biggest-category);
     border-bottom: 5px solid var(--main-yellow);
 }
 
-figure {
-    width: 100%;
-    height: 16rem;
-    /* overflow: hidden;*/
+.article-big:first-of-type h2 {
+    font: var(--biggest-heading);
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-figure img {
+.article-big:first-of-type .summary {
+    font-size: 1.18rem;
+    font: var(--biggest-content);
+    text-align: center;
+}
+
+.article-big:first-of-type .category {
+    align-self: center;
+    padding-bottom: 7px;
+    margin-bottom: 1.5rem;
+}
+
+.article-big:first-of-type .article-meta {
+    font: var(--biggest-meta);
+    text-align: center;
+}
+
+figure, .img-container {
+    width: 100%;
+    height: 16rem;
+    /*   overflow: hidden;*/
+}
+
+.img-container img {
     height: 100%;
     width: 100%;
     justify-self: center;
     object-fit: cover;
-    transition: all 0.3s;
+    transition: all 0.3s linear;
 }
 
 figure:hover {
@@ -141,6 +192,8 @@ figure img:hover {
 .article-meta {
     font-style: italic;
     font-size: 0.79rem;
+    font: var(--medium-meta);
+
     width: 100%;
 }
 
@@ -159,30 +212,6 @@ figure img:hover {
     margin: 0px 0.3rem;
 }
 
-.article-big:first-of-type h2 {
-    font-size: 2.5rem;
-    font-family: 'Gelasio', sans-serif;
-    line-height: 2.4rem;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.article-big:first-of-type .summary {
-    font-size: 1.18rem;
-    text-align: center;
-}
-
-.article-big:first-of-type .category {
-    align-self: center;
-    padding-bottom: 7px;
-    margin-bottom: 1.5rem;
-}
-
-.article-big:first-of-type .article-meta {
-    font-size: 0.8rem;
-    text-align: center;
-}
-
 .article-big.briefing {
     margin: 0;
 }
@@ -197,6 +226,8 @@ figure img:hover {
     margin-bottom: 0.7rem;
     text-align: center;
     font-size: 1.15rem;
+    font: var(--large-category);
+
     border-bottom: none;
     border-top: 5px solid var(--main-yellow);
 }
@@ -225,7 +256,7 @@ figure img:hover {
 
 .article-big.briefing .category::before {
     position: absolute;
-    margin-top: -13px;
+    margin-top: -0.8rem;
     content: '';
     border-top: 5px solid black;
     animation: reverseanim 0.35s linear both;
@@ -239,21 +270,19 @@ figure img:hover {
     margin: 0 1.72rem;
     text-align: center;
     margin-bottom: 1.9rem;
-
 }
 
 .article-big.briefing h2 {
-margin: 1.4rem 0;
-line-height: 2.0rem;
-text-align: center;
+    margin: 1.4rem 0;
+    line-height: 2.0rem;
+    text-align: center;
 }
 
 .article-big.briefing .summary {
     font-size: 1.1rem;
     line-height: 1.8rem;
-
-    }
-    
+    font: var(--large-content);
+}
 
 .section {
     display: flex;
@@ -264,7 +293,6 @@ text-align: center;
 
 .section:first-of-type div {
     background-image: none;
-    border: 2px solid red;
 }
 
 .section .category {
@@ -285,21 +313,19 @@ text-align: center;
 }
 
 .card:last-of-type {
-    border: none
 }
 
-.card figure {
+.card .img-container {
     grid-area: img;
     position: relative;
+    align-self: center;
     width: 100%;
-    height: auto;
-}
-
-.card figure:after {
-    content: "";
+    height: 0;
     display: block;
     padding-bottom: 100%;
 }
+
+.card .img-container:after {}
 
 .card img {
     position: absolute;
@@ -310,47 +336,47 @@ text-align: center;
 .card h2 {
     grid-area: title;
     font-size: 1.2rem;
+    height: auto;
     align-self: end;
+    font: var(--small-heading);
 }
 
 .card .article-meta {
+    height: 100%;
     grid-area: meta;
-    font-size: 0.75rem;
-    align-self: start;
+    font-size: 0.650rem;
+    align-self: end;
+    font: var(--small-meta);
 }
 
 .nav-footer, .social {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    font-family: Noto Sans, sans-serif;
-    font-size: 1.18rem;
-    line-height: 2.4rem;
-    font-weight: bold;
+
     list-style: none;
     height: 10rem;
     border-bottom: 1px solid rgb(235, 235, 235);
     padding: 0 1.72rem;
+    font:  var(--large-noto);
 }
 
 .Subscribe {
     padding: 0 1.72rem;
     padding-top: 2rem;
-
 }
 
 .Subscribe .Heading {
     font-family: 'Gelasio', sans-serif;
     width: 5rem;
-    font-weight: bold;
-    font-size: 2rem;
-    line-height: 2rem;
     margin: 1rem 0rem;
+    font: var(--medium-heading)
 }
 
 .Subscribe .getIt {
     font-family: Noto sans, sans-serif;
     font-size: 1rem;
+    font: var(--small-noto);
     margin: 1rem 0rem;
 }
 
@@ -394,6 +420,7 @@ text-align: center;
     border: none;
     padding: 1rem;
     margin: 0 auto;
+    font: var(--small-noto-bold);
 }
 
 footer {
@@ -402,6 +429,7 @@ footer {
     font-size: 0.71rem;
     line-height: 1.4rem;
     letter-spacing: .03rem;
+    font: var(--tiny);
 }
 
 footer a {
@@ -412,10 +440,15 @@ footer a {
 .PRR {
     height: auto;
     padding: 1.5rem 2rem;
-
     background-color: rgb(235, 235, 235);
 }
 
-.PRR img {
+.PRR img {}
 
+
+
+
+.Loading {
+    opacity: 0;
 }
+
