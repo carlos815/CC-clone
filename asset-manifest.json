@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/CC-clone/static/css/main.2e575870.chunk.css",
+    "main.js": "/CC-clone/static/js/main.5b35145f.chunk.js",
+    "main.js.map": "/CC-clone/static/js/main.5b35145f.chunk.js.map",
+    "runtime-main.js": "/CC-clone/static/js/runtime-main.30253081.js",
+    "runtime-main.js.map": "/CC-clone/static/js/runtime-main.30253081.js.map",
+    "static/js/2.b13752b3.chunk.js": "/CC-clone/static/js/2.b13752b3.chunk.js",
+    "static/js/2.b13752b3.chunk.js.map": "/CC-clone/static/js/2.b13752b3.chunk.js.map",
+    "index.html": "/CC-clone/index.html",
+    "precache-manifest.a81aa910b565d8f105efc8695d85cc31.js": "/CC-clone/precache-manifest.a81aa910b565d8f105efc8695d85cc31.js",
+    "service-worker.js": "/CC-clone/service-worker.js",
+    "static/css/main.2e575870.chunk.css.map": "/CC-clone/static/css/main.2e575870.chunk.css.map",
+    "static/js/2.b13752b3.chunk.js.LICENSE.txt": "/CC-clone/static/js/2.b13752b3.chunk.js.LICENSE.txt",
+    "static/media/IMG-8012-scaled.jpg": "/CC-clone/static/media/IMG-8012-scaled.bf8473a4.jpg",
+    "static/media/Image-118.png": "/CC-clone/static/media/Image-118.8616ce44.png",
+    "static/media/arepa.min.svg": "/CC-clone/static/media/arepa.min.968b49fa.svg",
+    "static/media/logo.min.svg": "/CC-clone/static/media/logo.min.8c4090a0.svg",
+    "static/media/rock_contra_la_dictadura_2_3-990x524.jpg": "/CC-clone/static/media/rock_contra_la_dictadura_2_3-990x524.e354045a.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.30253081.js",
+    "static/js/2.b13752b3.chunk.js",
+    "static/css/main.2e575870.chunk.css",
+    "static/js/main.5b35145f.chunk.js"
+  ]
+}
