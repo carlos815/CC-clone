@@ -1,69 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Whoa! this actually got a view? hello reader-person!]
 
-## Available Scripts
+## Caracas Chronicles in React
 
-In the project directory, you can run:
+This is a remake of Caracas Chronicles' front page build from scratch in React. You can find it [here](https://carlos815.github.io/CC-clone/)
 
-### `npm start`
+### Copytight stuff: this is not the best site in the world, this is just a tribute
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This page stays updated with the real site, remember that the design belongs to Caracas Chronicles, plus the content of the articles and the images.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### They left the door open 🤭
 
-### `npm test`
+Caracas Chronicles, or CC, as I will refer to from now on, is a news website made in WordPress. By default, WordPress sites allow you to access their Rest API without authentication just by adding "/wp-json/wp/v2/" to the end of the link.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It turns out, CC is one of those sites, they let the door open, which is not a big deal, because really all you can do is get jsons and read them, but I took that oportunity to rebuild their page using React.
 
-### `npm run build`
+Because of the whole, "unauthenticated-access" dealio, this clone can stop working at any second (and it does stop working from time to time), but that's ok, the objective of this project is to flex my web development abilities (and to practice, of course).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Features
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+-The CSS is strong with this one. This page doesn't share **any** of the code of Caracas Chronicles but it looks eerily similar (Put em side by side to see what I mean). I wanted to make a pixel perfect recreation without peeking at their code (which was honestly the hardest thing to pull off).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-It has the desktop version, the mobile version and the whatever is in between. You can rezise your window to your heart's content and it'll still look like the original site. 
 
-### `npm run eject`
+-I rely on a bunch of parallel async requests to CC to get the recent posts by category, with the author, date, exerpt, and the image. All of those are things that can be found in the Json using the right parameters.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-I'm using hooks instead of classes for the whole thing.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-The images have lazy loading, they load only when they are near the viewport, and their resolution varies based on the screen size. They also have a nice loading spinner and they fade in when they have loaded.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+-I'm not using any state management solution, as the app is super small, as well as no router.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### About some of the components
 
-## Learn More
+#### The App component
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This guy does most of the heavy lifting
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. At the beginning it creates the empty variables where the json responses are going to live plus the empty variables where the array of jsx components of the actual posts.
 
-### Code Splitting
+2. It shows the nice spinner while it makes the GET requests.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+3. Once the responses are done, it uses a function called buildArticles, which receives the databases and a type of component to generate the jsx of the articles. It stores those in its current state and uses it to build the whole thing
 
-### Analyzing the Bundle Size
+#### The buildArticles function
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+This function receives a Json object with the information of one or more posts, and creates three types of components, the ArticleBig one, the Briefing, and the ArticleSmall. These components are very similar, but come with different classes so the CSS can distinguish them and format them accordinly.
 
-### Making a Progressive Web App
+buildArticles also makes some extra GET requests to provide the article with extra information via props. For example, the json of each article doesn't include the name of the author, instead it has a link to another json where that information is. The same thing happens with the links of the images with different resolutions for the srcSet.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### Things missing (I wanted to add those later, but honestly this project has already taken longer than I expected so IDK...)
 
-### Advanced Configuration
+-The header and the sidebar of the original site
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+-A visual error handling for when the server refuses to answer, right now it stays loading and it doesn't show any feedback indicating that the server got angry for all the unauthenticated requests again.
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-"# CC-clone" 
+Check out my [My Flutter App](https://play.google.com/store/apps/details?id=com.carlos.laslucas)
